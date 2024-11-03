@@ -3,7 +3,7 @@
 // Import only what you need, to help your bundler optimize final code size using tree shaking
 // see https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)
 
-import * as THREE from './three';
+import * as THREE from 'three';
 
 import { initializeBox } from './putObjectsBox.js';
 
