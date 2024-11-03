@@ -20,6 +20,13 @@ export default defineConfig({
     build: {
         sourcemap: true,
     },
+    resolve: {
+        alias: {
+            'three': 'three',
+            'three/addons/': 'three/examples/jsm/',
+            '@three/examples/': 'three/examples/jsm/'
+        }
+    },
     server: {
         open: true
     },
