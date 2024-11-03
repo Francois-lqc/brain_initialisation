@@ -15,7 +15,7 @@ import {
     AudioListener,
     Audio,
     Raycaster
-} from 'three';
+} from './three';
 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 

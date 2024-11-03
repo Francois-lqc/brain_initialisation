@@ -15,7 +15,7 @@ import {
     AudioListener,
     Audio,
     Box3
-} from 'three';
+} from './three';
 
 import { initializeMain } from './main.js';
 

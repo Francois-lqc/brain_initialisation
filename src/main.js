@@ -15,7 +15,7 @@ import {
   AudioListener,
   Audio,
   Raycaster
-} from 'three';
+} from './three';
 
 import { initializeBox } from './putObjectsBox.js';
 

@@ -15,7 +15,7 @@ import {
   SphereGeometry,
   MeshBasicMaterial,
   Mesh
-} from 'three';
+} from './three';
 
 import { initializeMain } from './main.js';
 
