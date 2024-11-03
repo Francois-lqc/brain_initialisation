@@ -22,7 +22,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            'three': 'https://cdn.jsdelivr.net/npm/three@0.152.0/build/three.module.js',
+            'three': 'three',
             'three/addons/': 'three/examples/jsm/',
             '@three/examples/': 'three/examples/jsm/'
         }
