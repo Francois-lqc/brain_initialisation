@@ -19,6 +19,23 @@ export default defineConfig({
     },
     build: {
         sourcemap: true,
+        outDir: 'dist',
+        assetsDir: 'assets',
+        minify: 'esbuild',
+        chunkSizeWarningLimit: 1000,
+        rollupOptions: {
+            output: {
+                manualChunks: (id) => {
+                    if (id.includes('node_modules/three/')) {
+                        if (id.includes('examples/jsm/')) {
+                            return 'three.examples';
+                        }
+                        return 'three.core';
+                    }
+                }
+            }
+        }
+
     },
     resolve: {
         alias: {
