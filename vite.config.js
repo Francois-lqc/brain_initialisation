@@ -44,6 +44,15 @@ export default defineConfig({
             '@three/examples/': 'three/examples/jsm/'
         }
     },
+    optimizeDeps: {
+    include: [
+        'three',
+        'three/examples/jsm/controls/OrbitControls',
+        'three/examples/jsm/loaders/GLTFLoader',
+        'three/examples/jsm/loaders/DRACOLoader'
+        ]
+    },
+
     server: {
         open: true
     },
