@@ -15,7 +15,7 @@ import {
     AudioListener,
     Audio,
     Box3
-} from './three';
+} as THREE from './three';
 
 import { initializeMain } from './main.js';
 
@@ -36,19 +36,19 @@ export function initializeBox() {
     }
 
     // SCENE & CAMERA & RENDERER
-    scene = new Scene();
+    scene = new THREE.Scene();
     aspect = window.innerWidth / window.innerHeight;
-    camera = new PerspectiveCamera(75, aspect, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
 
-    renderer = new WebGLRenderer();
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
     // LIGHT
     environment = new RoomEnvironment();
-    pmremGenerator = new PMREMGenerator(renderer);
+    pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-    scene.background = new Color(0xbbbbbb);
+    scene.background = new THREE.Color(0xbbbbbb);
     scene.environment = pmremGenerator.fromScene(environment).texture;
 
     controls = new OrbitControls(camera, renderer.domElement);
@@ -181,16 +181,16 @@ const animation = () => {
 function isCoinInBox(coin) {
     if (!boxDetection)
         return false;
-    const boxBounds = new Box3().setFromObject(boxDetection);
-    const coinBounds = new Box3().setFromObject(coin);
+    const boxBounds = new THREE.Box3().setFromObject(boxDetection);
+    const coinBounds = new THREE.Box3().setFromObject(coin);
 
     // Check if the coin bounds intersect with the box bounds
     return boxBounds.intersectsBox(coinBounds);
 }
 // AUDIO
-var audioLoader = new AudioLoader();
-var listener = new AudioListener();
-var audio = new Audio(listener);
+var audioLoader = new THREE.AudioLoader();
+var listener = new THREE.AudioListener();
+var audio = new THREE.Audio(listener);
 audioLoader.load("brain_initiation/assets/audios/mario-coin.mp3", function (buffer) {
     audio.setBuffer(buffer);
     audio.setLoop(false);
@@ -199,8 +199,8 @@ audioLoader.load("brain_initiation/assets/audios/mario-coin.mp3", function (buff
 
 // Select and move the coin
 let selectedCoin = null;
-let raycaster = new Raycaster();
-let mouse = new Vector2();
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
 
 function onMouseDown(event) {
     event.preventDefault();
