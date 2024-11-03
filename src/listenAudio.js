@@ -15,7 +15,7 @@ import {
     AudioListener,
     Audio,
     Raycaster
-} from './three';
+} as THREE from 'three';
 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
@@ -44,22 +44,22 @@ export function initializeListenAudio() {
     }
 
     // SCENE & CAMERA & RENDERER
-    scene = new Scene();
+    scene = new THREE.Scene();
     aspect = window.innerWidth / window.innerHeight;
-    camera = new PerspectiveCamera(75, aspect, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
 
-    renderer = new WebGLRenderer();
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    controls = new OrbitControls(camera, renderer.domElement);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.listenToKeyEvents(window); // optional
 
     // LIGHT
     environment = new RoomEnvironment();
-    pmremGenerator = new PMREMGenerator(renderer);
+    pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-    scene.background = new Color(0xbbbbbb);
+    scene.background = new THREE.Color(0xbbbbbb);
     scene.environment = pmremGenerator.fromScene(environment).texture;
 
     window.addEventListener('mousedown', clickButton, false);
@@ -67,9 +67,9 @@ export function initializeListenAudio() {
 
 
     if (!backgroundAudio) {
-        audioLoader = new AudioLoader();
-        listener = new AudioListener();
-        backgroundAudio = new Audio(listener);
+        audioLoader = new THREE.AudioLoader();
+        listener = new THREE.AudioListener();
+        backgroundAudio = new THREE.Audio(listener);
         audioLoader.load("brain_initiation/assets/audios/background_sound.mp3", function (buffer) {
             backgroundAudio.setBuffer(buffer);
             backgroundAudio.setLoop(true);
@@ -78,10 +78,10 @@ export function initializeListenAudio() {
         });
     }
 
-    audioTestLoader = new AudioLoader();
-    listener = new AudioListener();
+    audioTestLoader = new THREE.AudioLoader();
+    listener = new THREE.AudioListener();
     camera.add(listener);
-    audioTest = new Audio(listener);
+    audioTest = new THREE.Audio(listener);
     audioTestLoader.load("brain_initiation/assets/audios/Violon_music_Sam_Marshall.mp3", function (buffer) {
         audioTest.setBuffer(buffer);
         audioTest.setLoop(false);
@@ -162,8 +162,8 @@ const animation = () => {
 };
 
 
-let raycaster = new Raycaster();
-let mouse = new Vector2();
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
 function clickButton(event) {
     if (!button)
         return;
