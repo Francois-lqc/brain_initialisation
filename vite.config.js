@@ -23,6 +23,7 @@ export default defineConfig({
     server: {
         open: true
     },
+    
     plugins: [
         viteStaticCopy({
             targets: [
