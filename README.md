@@ -2,6 +2,9 @@
 
 An interactive tool developed with [Three.js](https://threejs.org/) for learning and exploring different areas of the human brain in 3D. This project allows users not only to visualize brain regions but also to stimulate each area in their own brain.
 
+## Link to play
+https://francois-lqc.github.io/brain_initialisation/
+
 ## Little visualisation of the home page
 [![Little overview](/public/assets/images_videos/demo.png)](/public/assets/images_videos/demo.mp4)
 
