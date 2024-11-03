@@ -15,7 +15,7 @@ import {
   AudioListener,
   Audio,
   Raycaster
-} from './three';
+} as THREE from './three';
 
 import { initializeBox } from './putObjectsBox.js';
 
@@ -32,9 +32,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 // AUDIO
-var audioLoader = new AudioLoader();
-var listener = new AudioListener();
-var backgroundAudio = new Audio(listener);
+var audioLoader = new THREE.AudioLoader();
+var listener = new THREE.AudioListener();
+var backgroundAudio = new THREE.Audio(listener);
 audioLoader.load("brain_initiation/assets/audios/background_sound.mp3", function (buffer) {
   backgroundAudio.setBuffer(buffer);
   backgroundAudio.setLoop(true);
@@ -53,11 +53,11 @@ export function initializeMain() {
   }
 
   // SCENE & CAMERA & RENDERER
-  scene = new Scene();
+  scene = new THREE.Scene();
   aspect = window.innerWidth / window.innerHeight;
-  camera = new PerspectiveCamera(75, aspect, 0.1, 1000);
+  camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
 
-  renderer = new WebGLRenderer();
+  renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
@@ -66,9 +66,9 @@ export function initializeMain() {
 
   // LIGHT
   environment = new RoomEnvironment();
-  pmremGenerator = new PMREMGenerator(renderer);
+  pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-  scene.background = new Color(0xbbbbbb);
+  scene.background = new THREE.Color(0xbbbbbb);
   scene.environment = pmremGenerator.fromScene(environment).texture;
 
   window.addEventListener('resize', onWindowResize, false);
@@ -229,11 +229,11 @@ let objectScaled = [];
 // Function to look at a part of brain
 function lookAtObjectByName() {
   // Calculate mouse position according to the screen
-  const mouse = new Vector3();
+  const mouse = new THREE.Vector3();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   //Raycaster to detect clicked object
-  const raycaster = new Raycaster();
+  const raycaster = new THREE.Raycaster();
   raycaster.setFromCamera(mouse, camera);
   // List of objects intersecting with the raycaster
   const intersects = raycaster.intersectObjects(scene.children);
@@ -249,7 +249,7 @@ function lookAtObjectByName() {
     // add clicked object to the scaled objects array
     objectScaled.push(targetObject);
     // Compute camera position
-    const targetWorldPosition = new Vector3();
+    const targetWorldPosition = new THREE.Vector3();
     targetObject.getWorldPosition(targetWorldPosition);
 
     brain_rotate = false;
@@ -268,7 +268,7 @@ function lookAtObjectByName() {
   }
 }
 
-const clock = new Clock();
+const clock = new THREE.Clock();
 
 // Main loop
 const animation = () => {
