@@ -3,19 +3,7 @@
 // Import only what you need, to help your bundler optimize final code size using tree shaking
 // see https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)
 
-import {
-    Clock,
-    Color,
-    PerspectiveCamera,
-    Scene,
-    Vector2,
-    WebGLRenderer,
-    PMREMGenerator,
-    AudioLoader,
-    AudioListener,
-    Audio,
-    Raycaster
-} as THREE from 'three';
+import * as THREE from 'three';
 
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
