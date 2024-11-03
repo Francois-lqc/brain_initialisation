@@ -15,7 +15,7 @@ import {
   SphereGeometry,
   MeshBasicMaterial,
   Mesh
-} from './three';
+} as THREE from './three';
 
 import { initializeMain } from './main.js';
 
@@ -42,11 +42,11 @@ export function initializeColorGame() {
   }
 
   // SCENE & CAMERA & RENDERER
-  scene = new Scene();
+  scene = new THREE.Scene();
   aspect = window.innerWidth / window.innerHeight;
-  camera = new PerspectiveCamera(75, aspect, 0.1, 1000);
+  camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
 
-  renderer = new WebGLRenderer();
+  renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
@@ -55,9 +55,9 @@ export function initializeColorGame() {
 
   // LIGHT
   environment = new RoomEnvironment();
-  pmremGenerator = new PMREMGenerator(renderer);
+  pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-  scene.background = new Color(0xbbbbbb);
+  scene.background = new THREE.Color(0xbbbbbb);
   scene.environment = pmremGenerator.fromScene(environment).texture;
 
   window.addEventListener('mousedown', clickButton, false);
@@ -163,19 +163,19 @@ const animation = () => {
 
 
 // Click
-let raycaster = new Raycaster();
-let mouse = new Vector2();
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
 function clickButton(event) {
   function addFirework(nb_part) {
     const particles = [];
-    const geometry = new SphereGeometry(0.05, 5, 5);
+    const geometry = new THREE.SphereGeometry(0.05, 5, 5);
 
     for (let i = 0; i < nb_part; i++) {
       const color = Math.floor(Math.random() * 0xffffff);
-      const material = new MeshBasicMaterial({ color, transparent: true, opacity: 1 });
-      const particle = new Mesh(geometry, material.clone());
+      const material = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 1 });
+      const particle = new THREE.Mesh(geometry, material.clone());
       particle.position.set((Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2);
-      particle.velocity = new Vector3((Math.random() - 0.5) * 0.3, (Math.random() - 0.5) * 0.3, (Math.random() - 0.5) * 0.3);
+      particle.velocity = new THREE.Vector3((Math.random() - 0.5) * 0.3, (Math.random() - 0.5) * 0.3, (Math.random() - 0.5) * 0.3);
       particles.push(particle);
       scene.add(particle);
     }
