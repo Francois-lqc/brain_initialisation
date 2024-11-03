@@ -14,7 +14,7 @@ import {
   BoxGeometry,
   MeshStandardMaterial,
   Mesh
-} from './three';
+} as THREE from './three';
 
 import { initializeMain } from './main.js';
 
@@ -40,19 +40,19 @@ export function initializeMemory() {
   }
 
   // SCENE & CAMERA & RENDERER
-  scene = new Scene();
+  scene = new THREE.Scene();
   aspect = window.innerWidth / window.innerHeight;
-  camera = new PerspectiveCamera(75, aspect, 0.1, 1000);
+  camera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
 
-  renderer = new WebGLRenderer();
+  renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
   // LIGHT
   environment = new RoomEnvironment();
-  pmremGenerator = new PMREMGenerator(renderer);
+  pmremGenerator = new THREE.PMREMGenerator(renderer);
 
-  scene.background = new Color(0xbbbbbb);
+  scene.background = new THREE.Color(0xbbbbbb);
   scene.environment = pmremGenerator.fromScene(environment).texture;
 
   controls = new OrbitControls(camera, renderer.domElement);
@@ -122,21 +122,21 @@ function setupGame() {
   }
 
   // Add the carpet 
-  carpetGeometry = new BoxGeometry(1 * cards.length, 1.5 * cards.length, 0.1);
-  carpetMaterial = new MeshStandardMaterial({ color: 0x000000 });
-  carpet = new Mesh(carpetGeometry, carpetMaterial);
+  carpetGeometry = new THREE.BoxGeometry(1 * cards.length, 1.5 * cards.length, 0.1);
+  carpetMaterial = new THREE.MeshStandardMaterial({ color: 0x000000 });
+  carpet = new THREE.Mesh(carpetGeometry, carpetMaterial);
   carpet.position.set(0, 0, -0.1);
   scene.add(carpet);
 }
 
 const createCard = (color) => {
-  const geometry = new BoxGeometry(1, 1.5, 0.1);
-  const frontMaterial = new MeshStandardMaterial({ color: color }); // Front side color
-  const backMaterial = new MeshStandardMaterial({ color: 0x808080 }); // Back side color (white)
+  const geometry = new THREE.BoxGeometry(1, 1.5, 0.1);
+  const frontMaterial = new THREE.MeshStandardMaterial({ color: color }); // Front side color
+  const backMaterial = new THREE.MeshStandardMaterial({ color: 0x808080 }); // Back side color (white)
 
   const materials = [backMaterial, backMaterial, backMaterial, backMaterial, backMaterial, frontMaterial];
 
-  const card = new Mesh(geometry, materials);
+  const card = new THREE.Mesh(geometry, materials);
   card.userData.originalColor = color; // Store original color for game logic
   return card;
 };
@@ -156,8 +156,8 @@ let firstCard = null;
 let secondCard = null;
 
 const onCardClick = (event) => {
-  const mouse = new Vector2();
-  const raycaster = new Raycaster();
+  const mouse = new THREE.Vector2();
+  const raycaster = new THREE.Raycaster();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
