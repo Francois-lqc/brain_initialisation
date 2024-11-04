@@ -10,7 +10,13 @@ export default defineConfig({
             supported: {
                 'top-level-await': true
             }
-        }
+        },
+        // include: [
+        //     'three',
+        //     'three/examples/jsm/controls/OrbitControls',
+        //     'three/examples/jsm/loaders/GLTFLoader',
+        //     'three/examples/jsm/loaders/DRACOLoader'
+        // ]
     },
     esbuild: {
         supported: {
@@ -37,26 +43,17 @@ export default defineConfig({
         }
 
     },
-    resolve: {
-        alias: {
-            'three': 'three',
-            'three/addons/': 'three/examples/jsm/',
-            '@three/examples/': 'three/examples/jsm/'
-        }
-    },
-    optimizeDeps: {
-    include: [
-        'three',
-        'three/examples/jsm/controls/OrbitControls',
-        'three/examples/jsm/loaders/GLTFLoader',
-        'three/examples/jsm/loaders/DRACOLoader'
-        ]
-    },
-
+    // resolve: {
+    //     alias: {
+    //         'three': 'three',
+    //         'three/addons/': 'three/examples/jsm/',
+    //         '@three/examples/': 'three/examples/jsm/'
+    //     }
+    // },
     server: {
         open: true
     },
-    
+
     plugins: [
         viteStaticCopy({
             targets: [
