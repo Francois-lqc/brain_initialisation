@@ -3,7 +3,7 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import glsl from 'vite-plugin-glsl';
 
 export default defineConfig({
-    base: "/brain_initiation",
+    //base: "/brain_initiation",
     clearScreen: false,
     optimizeDeps: {
         esbuildOptions: {
@@ -11,12 +11,12 @@ export default defineConfig({
                 'top-level-await': true
             }
         },
-        // include: [
-        //     'three',
-        //     'three/examples/jsm/controls/OrbitControls',
-        //     'three/examples/jsm/loaders/GLTFLoader',
-        //     'three/examples/jsm/loaders/DRACOLoader'
-        // ]
+        include: [
+            'three',
+            'three/examples/jsm/controls/OrbitControls',
+            'three/examples/jsm/loaders/GLTFLoader',
+            'three/examples/jsm/loaders/DRACOLoader'
+        ]
     },
     esbuild: {
         supported: {
@@ -43,13 +43,13 @@ export default defineConfig({
         }
 
     },
-    // resolve: {
-    //     alias: {
-    //         'three': 'three',
-    //         'three/addons/': 'three/examples/jsm/',
-    //         '@three/examples/': 'three/examples/jsm/'
-    //     }
-    // },
+    resolve: {
+        alias: {
+            'three': 'three',
+            'three/addons/': 'three/examples/jsm/',
+            '@three/examples/': 'three/examples/jsm/'
+        }
+    },
     server: {
         open: true
     },
