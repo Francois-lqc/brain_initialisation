@@ -5,7 +5,7 @@ import glsl from 'vite-plugin-glsl';
 export default defineConfig({
 
     clearScreen: false,
-    base: "/brain_initiation/",
+    base: "/brain_initialisation/",
     optimizeDeps: {
         esbuildOptions: {
             supported: {
