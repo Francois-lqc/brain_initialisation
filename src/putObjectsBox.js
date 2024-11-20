@@ -93,7 +93,7 @@ function RandomValue(min, max) {
 
 function loadBoxData() {
     new GLTFLoader()
-        .setPath('brain_initiation/assets/models/')
+        .setPath('brain_initialisation/assets/models/')
         .load('empty_box.glb', gltfBoxReader);
 }
 
@@ -117,7 +117,7 @@ function gltfBoxReader(gltf) {
 
 function loadCoinData() {
     new GLTFLoader()
-        .setPath('brain_initiation/assets/models/')
+        .setPath('brain_initialisation/assets/models/')
         .load('coin.glb', gltfCoinReader);
 }
 
@@ -179,7 +179,7 @@ function isCoinInBox(coin) {
 var audioLoader = new THREE.AudioLoader();
 var listener = new THREE.AudioListener();
 var audio = new THREE.Audio(listener);
-audioLoader.load("brain_initiation/assets/audios/mario-coin.mp3", function (buffer) {
+audioLoader.load("brain_initialisation/assets/audios/mario-coin.mp3", function (buffer) {
     audio.setBuffer(buffer);
     audio.setLoop(false);
     audio.setVolume(0.5);

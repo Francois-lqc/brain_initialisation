@@ -23,7 +23,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 var audioLoader = new THREE.AudioLoader();
 var listener = new THREE.AudioListener();
 var backgroundAudio = new THREE.Audio(listener);
-audioLoader.load("brain_initiation/assets/audios/background_sound.mp3", function (buffer) {
+audioLoader.load("brain_initialisation/assets/audios/background_sound.mp3", function (buffer) {
   backgroundAudio.setBuffer(buffer);
   backgroundAudio.setLoop(true);
   backgroundAudio.setVolume(1);
@@ -181,7 +181,7 @@ export function initializeMain() {
 
 function loadData() {
   new GLTFLoader()
-    .setPath('brain_initiation/assets/models/')
+    .setPath('brain_initilisation/assets/models/')
     .load('big_brain.glb', gltfReader);
 }
 
