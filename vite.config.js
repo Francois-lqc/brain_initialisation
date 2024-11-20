@@ -22,6 +22,7 @@ export default defineConfig({
         sourcemap: true,
         outDir: 'dist',
         assetsDir: 'assets',
+        minify: 'esbuild',
     },
     server: {
         open: true
