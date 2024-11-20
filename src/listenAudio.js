@@ -40,7 +40,7 @@ export function initializeListenAudio() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new OrbitControls(camera, renderer.domElement);
     controls.listenToKeyEvents(window); // optional
 
     // LIGHT

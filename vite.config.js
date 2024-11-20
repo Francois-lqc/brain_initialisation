@@ -3,20 +3,15 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import glsl from 'vite-plugin-glsl';
 
 export default defineConfig({
-    base: "/brain_initiation",
+
     clearScreen: false,
+    base: "/brain_initiation/",
     optimizeDeps: {
         esbuildOptions: {
             supported: {
                 'top-level-await': true
             }
         },
-        // include: [
-        //     'three',
-        //     'three/examples/jsm/controls/OrbitControls',
-        //     'three/examples/jsm/loaders/GLTFLoader',
-        //     'three/examples/jsm/loaders/DRACOLoader'
-        // ]
     },
     esbuild: {
         supported: {
@@ -27,33 +22,18 @@ export default defineConfig({
         sourcemap: true,
         outDir: 'dist',
         assetsDir: 'assets',
-        minify: 'esbuild',
-        chunkSizeWarningLimit: 1000,
-        rollupOptions: {
-            output: {
-                manualChunks: (id) => {
-                    if (id.includes('node_modules/three/')) {
-                        if (id.includes('examples/jsm/')) {
-                            return 'three.examples';
-                        }
-                        return 'three.core';
-                    }
-                }
-            }
-        }
-
     },
-    // resolve: {
-    //     alias: {
-    //         'three': 'three',
-    //         'three/addons/': 'three/examples/jsm/',
-    //         '@three/examples/': 'three/examples/jsm/'
-    //     }
-    // },
     server: {
         open: true
     },
 
+    resolve: {
+        alias: {
+            'three': 'three',
+            'three/addons/': 'three/examples/jsm/',
+            '@three/examples/': 'three/examples/jsm/'
+        }
+    },
     plugins: [
         viteStaticCopy({
             targets: [
