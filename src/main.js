@@ -23,7 +23,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 var audioLoader = new THREE.AudioLoader();
 var listener = new THREE.AudioListener();
 var backgroundAudio = new THREE.Audio(listener);
-audioLoader.load("assets/background_sound.mp3", function (buffer) {
+audioLoader.load("assets/audios/background_sound.mp3", function (buffer) {
   backgroundAudio.setBuffer(buffer);
   backgroundAudio.setLoop(true);
   backgroundAudio.setVolume(1);
