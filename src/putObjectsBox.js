@@ -179,7 +179,7 @@ function isCoinInBox(coin) {
 var audioLoader = new THREE.AudioLoader();
 var listener = new THREE.AudioListener();
 var audio = new THREE.Audio(listener);
-audioLoader.load("assets/mario-coin.mp3", function (buffer) {
+audioLoader.load("assets/audios/mario-coin.mp3", function (buffer) {
     audio.setBuffer(buffer);
     audio.setLoop(false);
     audio.setVolume(0.5);
