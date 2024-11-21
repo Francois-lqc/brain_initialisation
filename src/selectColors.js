@@ -97,7 +97,7 @@ export function initializeColorGame() {
 
 function loadCubeData() {
   new GLTFLoader()
-    .setPath('brain_initialisation/assets/models/')
+    .setPath('assets/models/')
     .load('cube.glb', gltfCubeReader);
 }
 
@@ -122,10 +122,9 @@ function gltfCubeReader(gltf) {
 }
 function loadSphereData() {
   new GLTFLoader()
-    .setPath('brain_initialisation/assets/models/')
+    .setPath('assets/models/')
     .load('sphere.glb', gltfSphereReader);
 }
-
 function gltfSphereReader(gltf) {
   let testModel = null;
 

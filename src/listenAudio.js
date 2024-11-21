@@ -58,7 +58,7 @@ export function initializeListenAudio() {
         audioLoader = new THREE.AudioLoader();
         listener = new THREE.AudioListener();
         backgroundAudio = new THREE.Audio(listener);
-        audioLoader.load("brain_initialisation/assets/audios/background_sound.mp3", function (buffer) {
+        audioLoader.load("assets/audios/background_sound.mp3", function (buffer) {
             backgroundAudio.setBuffer(buffer);
             backgroundAudio.setLoop(true);
             backgroundAudio.setVolume(1);
@@ -70,7 +70,7 @@ export function initializeListenAudio() {
     listener = new THREE.AudioListener();
     camera.add(listener);
     audioTest = new THREE.Audio(listener);
-    audioTestLoader.load("brain_initialisation/assets/audios/Violon_music_Sam_Marshall.mp3", function (buffer) {
+    audioTestLoader.load("assets/audios/Violon_music_Sam_Marshall.mp3", function (buffer) {
         audioTest.setBuffer(buffer);
         audioTest.setLoop(false);
         audioTest.setVolume(1);
@@ -120,7 +120,7 @@ let button;
 
 function loadData() {
     new GLTFLoader()
-        .setPath('brain_initialisation/assets/models/')
+        .setPath('assets/models/')
         .load('button.glb', gltfReader);
 }
 
